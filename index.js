@@ -369,13 +369,13 @@ class Ball {
     check_status() {
         if (this.status == Main.Status.INFECTED) {
             let inf_age = this.main.time - this.inf_start;
-            if (inf_age > this.main.inf_duration) {
-                this.main.inc_recovered();
-                this.status = Main.Status.RECOVERD;
-            } else if (inf_age == this.main.inf_duration) {
+            if (inf_age >= this.main.inf_duration) {
                 if (Math.random() < this.main.death_rate) {
                     this.main.inc_dead();
                     this.status = Main.Status.DEAD;
+                } else {
+                    this.main.inc_recovered();
+                    this.status = Main.Status.RECOVERD;
                 }
             }
         }
@@ -410,11 +410,11 @@ class Main {
         this.sim_ctx = sim_ctx;
         this.chart_ctx = chart_ctx;
         this.pop_size = 150;
-        this.ball_radius = 3;
-        this.start_infected = 1;
-        this.inf_chance = 0.75;
-        this.inf_duration = 450;
-        this.death_rate = 0.05;
+        this.ball_radius = 5;
+        this.start_infected = 50;
+        this.inf_chance = 0;
+        this.inf_duration = 30;
+        this.death_rate = 0.5;
         this.speed = 1;
         this.walls = [];
         this.adding_wall = false;
