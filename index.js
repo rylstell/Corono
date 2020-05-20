@@ -410,11 +410,11 @@ class Main {
         this.sim_ctx = sim_ctx;
         this.chart_ctx = chart_ctx;
         this.pop_size = 150;
-        this.ball_radius = 5;
-        this.start_infected = 50;
-        this.inf_chance = 0;
-        this.inf_duration = 30;
-        this.death_rate = 0.5;
+        this.ball_radius = 3;
+        this.start_infected = 1;
+        this.inf_chance = 0.75;
+        this.inf_duration = 450;
+        this.death_rate = 0.05;
         this.speed = 1;
         this.walls = [];
         this.adding_wall = false;
@@ -449,7 +449,7 @@ class Main {
     }
 
     create_start_walls() {
-        let gap = 30;
+        let gap = 40;
         this.walls = [
             new Wall(this, new Vec2(SIM_WIDTH/3, 0), new Vec2(SIM_WIDTH/3, SIM_HEIGHT/2-gap/2)),
             new Wall(this, new Vec2(SIM_WIDTH/3, SIM_HEIGHT/2+gap/2), new Vec2(SIM_WIDTH/3, SIM_HEIGHT))
